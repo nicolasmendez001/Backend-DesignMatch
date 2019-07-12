@@ -7,6 +7,7 @@ package co.edu.uptc.sw2.desingmatch.servicios.logica;
 
 import co.edu.uptc.sw2.desingmatch.persistence.DisenioDao;
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Disenio;
+import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
@@ -22,5 +23,9 @@ public class DisenioLogica {
 
     public Disenio updateDisenio(Disenio disenio) {
         return dao.updateDisenio(disenio);
+    }
+
+    public List<Disenio> buscarDisenosSinProcesar() {
+        return dao.geDisenionSinPorcesar();
     }
 }

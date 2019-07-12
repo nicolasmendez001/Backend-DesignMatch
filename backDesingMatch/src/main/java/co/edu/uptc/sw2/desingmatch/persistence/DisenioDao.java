@@ -7,6 +7,7 @@ package co.edu.uptc.sw2.desingmatch.persistence;
 
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Disenio;
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Proyecto;
+import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -27,5 +28,10 @@ public class DisenioDao {
     public Disenio updateDisenio(Disenio disenio) {
         em.merge(disenio);
         return disenio;
+    }
+
+    public List<Disenio> geDisenionSinPorcesar() {
+        String q = "select d from Disenio d where d.estado = 'EN_PROCESO'";
+        return em.createQuery(q).getResultList();
     }
 }

@@ -11,6 +11,7 @@ import co.edu.uptc.sw2.desingmatch.tools.FilesManager;
 import java.util.ArrayList;
 import java.util.List;
 import javax.ejb.EJB;
+import javax.ws.rs.GET;
 import javax.ws.rs.POST;
 import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
@@ -44,5 +45,11 @@ public class DisenioServicio {
     public Disenio editarDisenio(Disenio disenio) {
         System.out.println("Entra a editar");
         return logica.updateDisenio(disenio);
+    }
+    
+    @GET
+    public List<Disenio> getList(){
+        System.out.println("Entra a buscar");
+        return logica.buscarDisenosSinProcesar();
     }
 }
