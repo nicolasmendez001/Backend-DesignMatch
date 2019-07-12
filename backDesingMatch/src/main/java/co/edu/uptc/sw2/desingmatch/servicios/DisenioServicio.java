@@ -7,27 +7,42 @@ package co.edu.uptc.sw2.desingmatch.servicios;
 
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Disenio;
 import co.edu.uptc.sw2.desingmatch.servicios.logica.DisenioLogica;
-import javax.ejb.Stateless;
-import javax.ws.rs.GET;
+import co.edu.uptc.sw2.desingmatch.tools.FilesManager;
+import java.util.ArrayList;
+import java.util.List;
+import javax.ejb.EJB;
 import javax.ws.rs.POST;
+import javax.ws.rs.PUT;
 import javax.ws.rs.Path;
 import javax.ws.rs.PathParam;
 
 @Path("disenio")
-@Stateless
 public class DisenioServicio {
-    
+
+    @EJB
     private DisenioLogica logica;
-    
-    @GET
-    public String getDisenios(){
-        return "Hello";
+
+    @POST
+    @Path("addDisenio/{id}")
+    public Disenio registrarDisenio(Disenio disenio, @PathParam("id") int id) {
+        System.out.println("Entra a añadir --> " );
+        System.out.println("Nombre --> " + disenio.getNombresDisenador());
+        System.out.println("Id p --> " + id);
+        return logica.addDisenio(disenio, id);
+    }
+
+    @POST
+    @Path("saveImg/{nameImg}")
+    public List<String> saveImg(String img, @PathParam("nameImg") String nameImg) {
+        List<String> l = new ArrayList<>();
+         l.add(FilesManager.guardarImagenEnDisco(img, nameImg));
+         return l;
     }
     
-    @POST
-    @Path("addDisenio/{project}")
-    public String registrarDisenio(Disenio disenio, @PathParam("project") int project) {
-        System.out.println("Entra a añadir");
-        return logica.addDisenio(disenio, project);
+    @PUT
+    @Path("update")
+    public Disenio editarDisenio(Disenio disenio) {
+        System.out.println("Entra a editar");
+        return logica.updateDisenio(disenio);
     }
 }

@@ -22,6 +22,7 @@ public class ProyectoServicio {
     @POST
     @Path("registrarProyecto/{idEmpresa}")
     public Proyecto registrarProyecto(Proyecto proyecto, @PathParam("idEmpresa") int id) {
+        System.out.println("Nombre -> " + proyecto.getNombre());
         return proyectoLogica.registarProyecto(proyecto, id);
     }
 

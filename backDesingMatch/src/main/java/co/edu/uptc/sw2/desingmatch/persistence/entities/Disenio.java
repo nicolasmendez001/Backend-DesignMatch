@@ -6,25 +6,31 @@
 package co.edu.uptc.sw2.desingmatch.persistence.entities;
 
 import java.io.Serializable;
-import java.util.Date;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.Temporal;
-import javax.persistence.TemporalType;
 
 @Entity
 public class Disenio implements Serializable {
-     @Id
+
+    @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String emailDisenador;
-    @Temporal(TemporalType.TIMESTAMP)
-    private Date fechaCreacion;
+    private String fechaCreacion;
     private String nombresDisenador;
     private String apellidosDisenador;
     private String estado;
+    private String rutaImagen;
+
+    public String getRutaImagen() {
+        return rutaImagen;
+    }
+
+    public void setRutaImagen(String rutaImagen) {
+        this.rutaImagen = rutaImagen;
+    }
 
     public void setId(int id) {
         this.id = id;
@@ -34,7 +40,7 @@ public class Disenio implements Serializable {
         this.emailDisenador = emailDisenador;
     }
 
-    public void setFechaCreacion(Date fechaCreacion) {
+    public void setFechaCreacion(String fechaCreacion) {
         this.fechaCreacion = fechaCreacion;
     }
 
@@ -58,7 +64,7 @@ public class Disenio implements Serializable {
         return emailDisenador;
     }
 
-    public Date getFechaCreacion() {
+    public String getFechaCreacion() {
         return fechaCreacion;
     }
 

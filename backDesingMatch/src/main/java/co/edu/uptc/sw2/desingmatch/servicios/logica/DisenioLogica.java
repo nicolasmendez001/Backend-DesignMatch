@@ -7,21 +7,20 @@ package co.edu.uptc.sw2.desingmatch.servicios.logica;
 
 import co.edu.uptc.sw2.desingmatch.persistence.DisenioDao;
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Disenio;
-import java.util.List;
 import javax.ejb.EJB;
 import javax.ejb.Stateless;
 
 @Stateless
 public class DisenioLogica {
-    
-     @EJB
-     private DisenioDao dao;
 
-    public List<Disenio> getDisenios(int project) {
-        return dao.getDisenios(project);
+    @EJB
+    private DisenioDao dao;
+
+    public Disenio addDisenio(Disenio disenio, int id) {
+        return dao.addDisenio(disenio, id);
     }
 
-    public String addDisenio(Disenio disenio, int project) {
-        return dao.addDisenio(disenio, project);
+    public Disenio updateDisenio(Disenio disenio) {
+        return dao.updateDisenio(disenio);
     }
 }

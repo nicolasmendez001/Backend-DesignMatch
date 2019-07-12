@@ -7,30 +7,25 @@ package co.edu.uptc.sw2.desingmatch.persistence;
 
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Disenio;
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Proyecto;
-import java.util.List;
 import javax.ejb.Stateless;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 
 @Stateless
 public class DisenioDao {
-    
-     @PersistenceContext
+
+    @PersistenceContext
     private EntityManager em;
 
-    public List<Disenio> getDisenios(int project) {
-        String query = "SELECT disenios FROM ";
-        return null;
+    public Disenio addDisenio(Disenio disenio, int id) {
+        Proyecto proyecto = em.find(Proyecto.class, id);
+        proyecto.getDisenios().add(disenio);
+        return disenio;
+
     }
 
-    public String addDisenio(Disenio disenio, int project) {
-        try {
-            Proyecto p = em.find(Proyecto.class, project);
-            p.getDisenios().add(disenio);
-            em.merge(p);
-            return "ok";
-        } catch (Exception e) {
-            return null;
-        }
+    public Disenio updateDisenio(Disenio disenio) {
+        em.merge(disenio);
+        return disenio;
     }
 }

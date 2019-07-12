@@ -1,6 +1,9 @@
 package co.edu.uptc.sw2.desingmatch.persistence.entities;
 
+import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.List;
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -8,15 +11,19 @@ import javax.persistence.Id;
 import javax.persistence.OneToMany;
 
 @Entity
-public class Proyecto {
+public class Proyecto implements Serializable {
     @Id
     @GeneratedValue(strategy = GenerationType.AUTO)
     private int id;
     private String nombre;
     private String descripcion;
     private double valor;
-    @OneToMany
+    @OneToMany(orphanRemoval = true, cascade = CascadeType.PERSIST)
     private List<Disenio> disenios;
+
+    public Proyecto() {
+        this.disenios = new ArrayList<>();
+    }
 
     public int getIdProyecto() {
         return id;
