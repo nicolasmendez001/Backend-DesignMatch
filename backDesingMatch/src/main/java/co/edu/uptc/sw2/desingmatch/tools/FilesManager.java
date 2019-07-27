@@ -1,14 +1,15 @@
 package co.edu.uptc.sw2.desingmatch.tools;
 
-import java.awt.image.BufferedImage;
 import java.io.BufferedOutputStream;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStream;
 import java.io.OutputStream;
-import javax.imageio.ImageIO;
+import java.util.ArrayList;
+import java.util.Base64;
+import java.util.List;
 import javax.xml.bind.DatatypeConverter;
+import org.apache.commons.io.FileUtils;
 
 public class FilesManager {
 
@@ -32,5 +33,13 @@ public class FilesManager {
         } catch (IOException e) {
             return "Error al guardar";
         }
+    }
+
+    public static List<String>  imgToBase64(String path) throws IOException {
+        byte[] fileContent = FileUtils.readFileToByteArray(new File(path));
+        String aux = Base64.getEncoder().encodeToString(fileContent);
+        List<String> l = new ArrayList<>();
+        l.add(aux);
+        return l;
     }
 }

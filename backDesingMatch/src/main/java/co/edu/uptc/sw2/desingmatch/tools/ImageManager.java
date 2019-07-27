@@ -1,5 +1,6 @@
 package co.edu.uptc.sw2.desingmatch.tools;
 
+import java.awt.Color;
 import java.awt.Graphics2D;
 import java.awt.RenderingHints;
 import java.awt.image.BufferedImage;
@@ -52,7 +53,12 @@ public class ImageManager {
 
     public static void drawString(BufferedImage bufferedImage, String text, String sDate) throws IOException {
         Graphics2D graphics2D = bufferedImage.createGraphics();
+        graphics2D.setColor(new Color(105,102,101));
+        graphics2D.fillRect(0,bufferedImage.getHeight() - 40,200,35);
+        graphics2D.setColor(new Color(255,255,255));
         graphics2D.drawString(text, 10, bufferedImage.getHeight() - 22);
         graphics2D.drawString(sDate, 10, bufferedImage.getHeight() - 10);
+        
+       
     }
 }

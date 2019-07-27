@@ -29,6 +29,7 @@ public class ApplicationConfig extends Application {
      * If required, comment out calling this method in getClasses().
      */
     private void addRestResourceClasses(Set<Class<?>> resources) {
+        resources.add(co.edu.uptc.sw2.desingmatch.servicios.CorsFilter.class);
         resources.add(co.edu.uptc.sw2.desingmatch.servicios.DisenioServicio.class);
         resources.add(co.edu.uptc.sw2.desingmatch.servicios.EmpresaServicio.class);
         resources.add(co.edu.uptc.sw2.desingmatch.servicios.ProyectoServicio.class);

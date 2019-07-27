@@ -1,5 +1,6 @@
 package co.edu.uptc.sw2.desingmatch.servicios;
 
+import co.edu.uptc.sw2.desingmatch.persistence.DTO.ProyectoDTO;
 import co.edu.uptc.sw2.desingmatch.persistence.entities.Proyecto;
 import co.edu.uptc.sw2.desingmatch.servicios.logica.ProyectoLogica;
 import java.util.List;
@@ -35,13 +36,13 @@ public class ProyectoServicio {
 
     @PUT
     @Path("editarProyecto")
-    public Proyecto editarProyecto(Proyecto proyecto) {
+    public ProyectoDTO editarProyecto(ProyectoDTO proyecto) {
         return proyectoLogica.editarProyecto(proyecto);
     }
 
     @GET
     @Path("/{url}")
-    public List<Proyecto> getListaProyectos(@PathParam("url") String url) {
+    public List<ProyectoDTO> getListaProyectos(@PathParam("url") String url) {
         System.out.println("entra --> " + url);
         return proyectoLogica.getListaProyectos(url);
     }

@@ -1,8 +1,3 @@
-/*
- * To change this license header, choose License Headers in Project Properties.
- * To change this template file, choose Tools | Templates
- * and open the template in the editor.
- */
 package co.edu.uptc.sw2.desingmatch.persistence.entities;
 
 import java.io.Serializable;
@@ -22,15 +17,35 @@ public class Disenio implements Serializable {
     private String nombresDisenador;
     private String apellidosDisenador;
     private String estado;
-    private String rutaImagen;
+    private String originalPath;
+    private String editPath;
+    private double costo;
 
-    public String getRutaImagen() {
-        return rutaImagen;
+    public void setCosto(double costo) {
+        this.costo = costo;
     }
 
-    public void setRutaImagen(String rutaImagen) {
-        this.rutaImagen = rutaImagen;
+    public double getCosto() {
+        return costo;
     }
+
+    public String getEditPath() {
+        return editPath;
+    }
+
+    public String getOriginalPath() {
+        return originalPath;
+    }
+
+    public void setEditPath(String editPath) {
+        this.editPath = editPath;
+    }
+
+    public void setOriginalPath(String originalPath) {
+        this.originalPath = originalPath;
+    }
+    
+   
 
     public void setId(int id) {
         this.id = id;
